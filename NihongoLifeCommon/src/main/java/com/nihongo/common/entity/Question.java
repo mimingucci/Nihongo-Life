@@ -30,5 +30,6 @@ public class Question {
         this.correctSolution=correctSolution;
     }
 
-
+    public Question() {
+    }
 }

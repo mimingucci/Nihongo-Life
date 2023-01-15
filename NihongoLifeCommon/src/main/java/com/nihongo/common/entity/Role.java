@@ -50,6 +50,9 @@ public class Role {
         return result;
     }
 
+    public Role() {
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

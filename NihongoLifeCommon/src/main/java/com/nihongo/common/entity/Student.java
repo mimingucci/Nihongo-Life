@@ -51,4 +51,26 @@ public class Student {
 
     @OneToMany(mappedBy = "recipient", orphanRemoval = false, cascade = CascadeType.ALL)
     private Set<Message> receiveMessages=new HashSet<>();
+
+    public Student(String name, String email, String password, AuthenticationType authType, boolean enabled, Date createdTime) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.authType = authType;
+        this.enabled = enabled;
+        this.createdTime = createdTime;
+    }
+
+    public Student(String name, String email, String password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
+    public Student() {
+    }
+
+    public Student(Integer id) {
+        this.id = id;
+    }
 }

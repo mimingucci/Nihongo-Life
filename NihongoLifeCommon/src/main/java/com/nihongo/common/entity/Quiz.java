@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,4 +22,15 @@ public class Quiz {
     private Integer score;
     @ManyToMany(mappedBy = "quiz")
     private Set<Student> students=new HashSet<>();
+
+
+    public Quiz() {
+    }
+
+    public Quiz(String title, Set<Question> questions, Integer score){
+        this.title = title;
+        this.questions=questions;
+        this.score=score;
+    }
 }
+

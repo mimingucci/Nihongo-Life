@@ -1,11 +1,13 @@
 package com.nihongo.common.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.Date;
 
 @Entity
 @Table(name = "messages")
+@Data
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,5 +26,8 @@ public class Message {
         this.content = content;
         this.sender=sender;
         this.recipient=recipient;
+    }
+
+    public Message() {
     }
 }

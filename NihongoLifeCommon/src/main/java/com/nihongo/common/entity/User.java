@@ -1,13 +1,16 @@
 package com.nihongo.common.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
+@Data
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +30,9 @@ public class User {
 
     @Column(length = 64)
     private String photos;
+
+    @Column(name = "created_time", nullable = false)
+    private Date createdTime;
 
     private boolean enabled;
 
@@ -144,5 +150,17 @@ public class User {
 
         return false;
     }
+
+    public User(String email, String password, String firstName, String lastName, Date createdTime, boolean enabled, Set<Role> roles) {
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.createdTime = createdTime;
+        this.enabled = enabled;
+        this.roles = roles;
+    }
+
+
 }
 
