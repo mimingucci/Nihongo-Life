@@ -3,6 +3,10 @@ package com.nihongo.common.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "students")
 @Data
@@ -34,4 +38,17 @@ public class Student {
 
     @Column(name = "reset_password_token", length = 30)
     private String resetPasswordToken;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "student_quiz", joinColumns = @JoinColumn(name="student_id"), inverseJoinColumns = @JoinColumn(name = "quiz_id"))
+    private Set<Quiz> quiz=new HashSet<>();
+
+    @Column(name = "created_time")
+    private Date createdTime;
+
+    @OneToMany(mappedBy = "sender", orphanRemoval = true, cascade = CascadeType.ALL)
+    private Set<Message> sendMessages;
+
+    @OneToMany(mappedBy = "recipient", orphanRemoval = false, cascade = CascadeType.ALL)
+    private Set<Message> receiveMessages=new HashSet<>();
 }

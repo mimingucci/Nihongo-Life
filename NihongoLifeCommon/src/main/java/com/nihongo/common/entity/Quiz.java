@@ -1,7 +1,6 @@
 package com.nihongo.common.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.HashSet;
@@ -11,8 +10,15 @@ import java.util.Set;
 @Table(name = "quiz")
 @Data
 public class Quiz {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
+    @Column(name = "title", nullable = false, length = 100)
+    private String title;
+    @OneToMany(mappedBy = "quiz", cascade = CascadeType.PERSIST)
     private Set<Question> questions=new HashSet<>();
+    @Column(name = "score", nullable = false)
     private Integer score;
+    @ManyToMany(mappedBy = "quiz")
+    private Set<Student> students=new HashSet<>();
 }
