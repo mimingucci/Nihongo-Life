@@ -59,12 +59,14 @@ public class Student {
         this.authType = authType;
         this.enabled = enabled;
         this.createdTime = createdTime;
+        this.totalScore=0;
     }
 
     public Student(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.totalScore=0;
     }
 
     public Student() {
@@ -72,5 +74,18 @@ public class Student {
 
     public Student(Integer id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", totalScore=" + totalScore +
+                ", authType=" + authType +
+                ", enabled=" + enabled +
+                '}';
     }
 }

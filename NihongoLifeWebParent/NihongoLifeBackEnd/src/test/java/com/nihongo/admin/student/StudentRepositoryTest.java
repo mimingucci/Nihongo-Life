@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.annotation.Rollback;
 
 import java.util.Arrays;
@@ -45,5 +48,19 @@ public class StudentRepositoryTest {
         List<Message> messages=messageRepository.findMessageBySender(new Student(1));
         messages.forEach(message -> System.out.println(message.getContent()));
         assert true;
+    }
+
+    @Test
+    public void updateTotalScore(){
+        repo.updateTotalScore(100, 1);
+        assert true;
+    }
+
+    @Test
+    public void listByPage(){
+        Pageable pageable= PageRequest.of(0, 10);
+        Page<Student> students=repo.listByPage("Van A", pageable);
+        System.out.println(students.getContent().get(0).toString());
+        assert students.getTotalElements()>0;
     }
 }

@@ -16,7 +16,7 @@ public class Quiz {
     private Integer id;
     @Column(name = "title", nullable = false, length = 100)
     private String title;
-    @OneToMany(mappedBy = "quiz", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "quiz", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private Set<Question> questions=new HashSet<>();
     @Column(name = "score", nullable = false)
     private Integer score;
@@ -31,6 +31,24 @@ public class Quiz {
         this.title = title;
         this.questions=questions;
         this.score=score;
+    }
+
+    public Quiz(String title, Integer score) {
+        this.title = title;
+        this.score = score;
+    }
+
+    public Quiz(Integer id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Quiz{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", score=" + score +
+                '}';
     }
 }
 

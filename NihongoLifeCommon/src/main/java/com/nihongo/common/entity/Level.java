@@ -19,6 +19,19 @@ public class Level {
     @OneToMany(mappedBy = "level",cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Lesson> lessons=new HashSet<>();
 
-    @OneToMany(mappedBy = "level", fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "level", fetch = FetchType.LAZY, orphanRemoval = true)
     private Set<Alphabet> alphabets=new HashSet<>();
+
+    @OneToMany(mappedBy = "level", fetch = FetchType.LAZY, orphanRemoval = true)
+    private Set<Seminar> seminars=new HashSet<>();
+
+    public Level() {
+    }
+
+    public Level(String name) {
+        this.name = name;
+    }
 }
+
+
+

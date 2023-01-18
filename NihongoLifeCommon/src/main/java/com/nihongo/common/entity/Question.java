@@ -20,7 +20,7 @@ public class Question {
     private String content;
     @Column(name = "correct_solution", nullable = false)
     private String correctSolution;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "quiz_id")
     private Quiz quiz;
 
@@ -31,5 +31,19 @@ public class Question {
     }
 
     public Question() {
+    }
+
+    public Question(Integer id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "id=" + id +
+                ", solutions=" + solutions +
+                ", content='" + content + '\'' +
+                ", correctSolution='" + correctSolution + '\'' +
+                '}';
     }
 }

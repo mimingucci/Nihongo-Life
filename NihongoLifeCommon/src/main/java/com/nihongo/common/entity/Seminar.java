@@ -15,4 +15,7 @@ public class Seminar extends Studying{
 
     @OneToMany(mappedBy = "seminar", orphanRemoval = true, cascade = CascadeType.ALL)
     private Set<VideoLesson> lessons=new HashSet<>();
+
+    public Seminar() {
+    }
 }
