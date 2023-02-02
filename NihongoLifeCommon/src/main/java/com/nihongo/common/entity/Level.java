@@ -1,14 +1,12 @@
 package com.nihongo.common.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "levels")
-@Data
 public class Level {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

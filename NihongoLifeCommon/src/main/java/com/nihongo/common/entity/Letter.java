@@ -1,14 +1,11 @@
 package com.nihongo.common.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "letters")
-@Data
 public class Letter implements  Comparable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,14 +1,12 @@
 package com.nihongo.common.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Data
+
 @Entity
 @Table(name="questions")
 public class Question {

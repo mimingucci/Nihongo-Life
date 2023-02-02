@@ -1,9 +1,7 @@
 package com.nihongo.common.entity;
 
-import lombok.Data;
-
 import java.util.List;
-@Data
+
 public class PagingDTO {
     private Integer currentPage;
     private Integer totalPages;
@@ -23,5 +21,53 @@ public class PagingDTO {
     }
 
     public PagingDTO() {
+    }
+
+    public Integer getCurrentPage() {
+        return currentPage;
+    }
+
+    public void setCurrentPage(Integer currentPage) {
+        this.currentPage = currentPage;
+    }
+
+    public Integer getTotalPages() {
+        return totalPages;
+    }
+
+    public void setTotalPages(Integer totalPages) {
+        this.totalPages = totalPages;
+    }
+
+    public Integer getStartCount() {
+        return startCount;
+    }
+
+    public void setStartCount(Integer startCount) {
+        this.startCount = startCount;
+    }
+
+    public Integer getEndCount() {
+        return endCount;
+    }
+
+    public void setEndCount(Integer endCount) {
+        this.endCount = endCount;
+    }
+
+    public Integer getTotalItems() {
+        return totalItems;
+    }
+
+    public void setTotalItems(Integer totalItems) {
+        this.totalItems = totalItems;
+    }
+
+    public List<?> getListItems() {
+        return listItems;
+    }
+
+    public void setListItems(List<?> listItems) {
+        this.listItems = listItems;
     }
 }

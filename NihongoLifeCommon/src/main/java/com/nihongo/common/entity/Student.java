@@ -1,15 +1,12 @@
 package com.nihongo.common.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "students")
-@Data
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -74,6 +71,110 @@ public class Student {
 
     public Student(Integer id) {
         this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Integer getTotalScore() {
+        return totalScore;
+    }
+
+    public void setTotalScore(Integer totalScore) {
+        this.totalScore = totalScore;
+    }
+
+    public AuthenticationType getAuthType() {
+        return authType;
+    }
+
+    public void setAuthType(AuthenticationType authType) {
+        this.authType = authType;
+    }
+
+    public String getVerificationCode() {
+        return verificationCode;
+    }
+
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getResetPasswordToken() {
+        return resetPasswordToken;
+    }
+
+    public void setResetPasswordToken(String resetPasswordToken) {
+        this.resetPasswordToken = resetPasswordToken;
+    }
+
+    public Set<Quiz> getQuiz() {
+        return quiz;
+    }
+
+    public void setQuiz(Set<Quiz> quiz) {
+        this.quiz = quiz;
+    }
+
+    public Date getCreatedTime() {
+        return createdTime;
+    }
+
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public Set<Message> getSendMessages() {
+        return sendMessages;
+    }
+
+    public void setSendMessages(Set<Message> sendMessages) {
+        this.sendMessages = sendMessages;
+    }
+
+    public Set<Message> getReceiveMessages() {
+        return receiveMessages;
+    }
+
+    public void setReceiveMessages(Set<Message> receiveMessages) {
+        this.receiveMessages = receiveMessages;
     }
 
     @Override

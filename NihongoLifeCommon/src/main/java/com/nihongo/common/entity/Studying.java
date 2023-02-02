@@ -1,9 +1,6 @@
 package com.nihongo.common.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-
-@Data
 @MappedSuperclass
 public abstract class Studying {
     @Id

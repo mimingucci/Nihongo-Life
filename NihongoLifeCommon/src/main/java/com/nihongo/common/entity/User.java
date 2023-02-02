@@ -1,7 +1,6 @@
 package com.nihongo.common.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -10,7 +9,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
-@Data
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -121,6 +119,10 @@ public class User {
         this.roles.add(role);
     }
 
+    public void setCreatedTime(Date createdTime) {
+        this.createdTime = createdTime;
+    }
+
     @Override
     public String toString() {
         return "User [id=" + id + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
@@ -160,6 +162,8 @@ public class User {
         this.enabled = enabled;
         this.roles = roles;
     }
+
+
 
 
 }

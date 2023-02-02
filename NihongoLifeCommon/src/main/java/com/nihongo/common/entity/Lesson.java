@@ -1,7 +1,6 @@
 package com.nihongo.common.entity;
 
 import jakarta.persistence.*;
-
 import java.util.Date;
 
 @Entity
@@ -42,5 +41,8 @@ public class Lesson {
         this.timeToRead=timeToRead;
         this.like=0;
         this.dislike=0;
+    }
+
+    public Lesson() {
     }
 }

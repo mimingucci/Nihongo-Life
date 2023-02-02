@@ -53,6 +53,10 @@ public class Role {
     public Role() {
     }
 
+    public Role(Integer id) {
+        this.id = id;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
