@@ -24,7 +24,7 @@ public class MessageRepositoryTest {
         Date dateA=new GregorianCalendar(2023, Calendar.JANUARY, 10).getTime();
         Date dateB=new Date();
         List<Message> messages=repo.findMessageFromDateAToDateB(dateA, dateB);
-        System.out.println(messages.get(0).getContent());
+        System.out.println(messages.get(0));
         assert messages.size()>0;
     }
 }

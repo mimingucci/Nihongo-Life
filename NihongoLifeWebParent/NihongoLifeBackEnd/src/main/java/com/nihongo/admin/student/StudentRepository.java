@@ -16,10 +16,16 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
     @Modifying
     public void updateAuthenticationType(AuthenticationType authType, Integer id);
 
+    @Query("UPDATE Student st SET st.enabled = :enable WHERE st.id = :id")
+    @Modifying
+    public void updateEnabledStatus(Integer id, Boolean enable);
+
     @Query("SELECT st FROM Student st WHERE st.name LIKE %:keyword% OR st.email LIKE %:keyword%")
     public Page<Student> listByPage(String keyword, Pageable pageable);
 
     public Page<Student> findAll(Pageable pageable);
 
     public Student findStudentByEmail(String email);
+
+    public Long countById(Integer id);
 }

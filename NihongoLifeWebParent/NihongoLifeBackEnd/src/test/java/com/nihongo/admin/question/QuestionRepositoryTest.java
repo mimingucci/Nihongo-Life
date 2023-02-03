@@ -39,7 +39,7 @@ public class QuestionRepositoryTest {
     public void getQuestion(){
         Question question=repo.findById(1).get();
         //question.getSolutions().forEach((solution)-> System.out.println(solution));
-        System.out.println(question.getContent());
+        System.out.println(question);
         assert question.getContent().length()>0;
     }
 

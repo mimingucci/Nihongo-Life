@@ -29,4 +29,45 @@ public class Message {
 
     public Message() {
     }
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Date getSendTime() {
+		return sendTime;
+	}
+
+	public void setSendTime(Date sendTime) {
+		this.sendTime = sendTime;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public Student getSender() {
+		return sender;
+	}
+
+	public void setSender(Student sender) {
+		this.sender = sender;
+	}
+
+	public Student getRecipient() {
+		return recipient;
+	}
+
+	public void setRecipient(Student recipient) {
+		this.recipient = recipient;
+	}
+    
 }

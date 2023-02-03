@@ -10,7 +10,7 @@ public abstract class Studying {
     private String name;
     private String logo;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "level_id")
     private Level level;
 
@@ -29,4 +29,10 @@ public abstract class Studying {
     public void setLogo(String logo) {
         this.logo = logo;
     }
+
+	public Studying() {
+		super();
+	}
+
+	
 }

@@ -21,7 +21,7 @@ public class Level {
     private Set<Alphabet> alphabets=new HashSet<>();
 
     @OneToMany(mappedBy = "level", fetch = FetchType.LAZY, orphanRemoval = true)
-    private Set<Seminar> seminars=new HashSet<>();
+   private Set<Seminar> seminars=new HashSet<>();
 
     public Level() {
     }

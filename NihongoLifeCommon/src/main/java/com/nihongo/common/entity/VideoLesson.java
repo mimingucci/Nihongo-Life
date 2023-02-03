@@ -6,22 +6,25 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "video_lessons")
-public class VideoLesson implements Serializable {
-    private static final long serialVersionUID = 1L;
+@Table(name = "video_lesson")
+public class VideoLesson {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "link", nullable = false, unique = true)
     private String link;
+    @Column(name = "title", nullable = false)
     private String title;
+    @Column(name = "likes")
     private Integer like;
+    @Column(name = "dislikes")
     private Integer dislike;
     @Column(name = "uploaded_time", nullable = false)
     private Date uploadedTime;
+    @Column(name = "run_time")
     private Integer runtime;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "seminar_id")
     private Seminar seminar;
 
@@ -93,11 +96,11 @@ public class VideoLesson implements Serializable {
         this.runtime = runtime;
     }
 
-    public Seminar getSeminar() {
-        return seminar;
-    }
-
-    public void setSeminar(Seminar seminar) {
-        this.seminar = seminar;
-    }
+//    public Seminar getSeminar() {
+//        return seminar;
+//    }
+//
+//    public void setSeminar(Seminar seminar) {
+//        this.seminar = seminar;
+//    }
 }

@@ -47,7 +47,8 @@ public class WebSecurityConfig {
    @Bean
    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 	  // http.authenticationProvider(authenticationProvider());
-       http.authorizeRequests()
+       http.csrf().disable()
+       .authorizeHttpRequests()
        .anyRequest().permitAll();
 //       .antMatchers("/states/list_by_country/**").hasAnyAuthority("Admin", "Salesperson")
 //		.antMatchers("/users/**", "/settings/**", "/countries/**", "/states/**").hasAuthority("Admin")

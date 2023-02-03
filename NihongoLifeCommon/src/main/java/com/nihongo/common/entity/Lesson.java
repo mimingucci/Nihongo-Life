@@ -18,8 +18,10 @@ public class Lesson {
 
     private String video;
 
+    @Column(name = "likes")
     private Integer like;
 
+    @Column(name = "dislikes")
     private Integer dislike;
     @Column(name = "title")
     private String title;
@@ -45,4 +47,93 @@ public class Lesson {
 
     public Lesson() {
     }
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getVideo() {
+		return video;
+	}
+
+	public void setVideo(String video) {
+		this.video = video;
+	}
+
+	public Integer getLike() {
+		return like;
+	}
+
+	public void setLike(Integer like) {
+		this.like = like;
+	}
+
+	public Integer getDislike() {
+		return dislike;
+	}
+
+	public void setDislike(Integer dislike) {
+		this.dislike = dislike;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public Integer getTimeToRead() {
+		return timeToRead;
+	}
+
+	public void setTimeToRead(Integer timeToRead) {
+		this.timeToRead = timeToRead;
+	}
+
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+
+	public String getMainImage() {
+		return mainImage;
+	}
+
+	public void setMainImage(String mainImage) {
+		this.mainImage = mainImage;
+	}
+    
 }

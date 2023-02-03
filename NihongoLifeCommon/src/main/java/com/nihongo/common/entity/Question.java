@@ -44,4 +44,45 @@ public class Question {
                 ", correctSolution='" + correctSolution + '\'' +
                 '}';
     }
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public List<String> getSolutions() {
+		return solutions;
+	}
+
+	public void setSolutions(List<String> solutions) {
+		this.solutions = solutions;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getCorrectSolution() {
+		return correctSolution;
+	}
+
+	public void setCorrectSolution(String correctSolution) {
+		this.correctSolution = correctSolution;
+	}
+
+	public Quiz getQuiz() {
+		return quiz;
+	}
+
+	public void setQuiz(Quiz quiz) {
+		this.quiz = quiz;
+	}
+    
 }
