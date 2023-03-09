@@ -3,6 +3,7 @@ package com.nihongo.common.entity;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -28,6 +29,22 @@ public class Level {
 
     public Level(String name) {
         this.name = name;
+    }
+
+    public Level(Integer id) {
+        this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Level level)) return false;
+        return id.equals(level.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
 

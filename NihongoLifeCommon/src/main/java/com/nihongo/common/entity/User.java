@@ -39,6 +39,20 @@ public class User {
             , inverseJoinColumns = @JoinColumn(name="role_id")
     )
     private Set<Role> roles=new HashSet<>();
+    @OneToMany(
+            mappedBy = "author",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private Set<Lesson> lessons=new HashSet<>();
+
+    public Set<Lesson> getLessons() {
+        return lessons;
+    }
+
+    public void setLessons(Set<Lesson> lessons) {
+        this.lessons = lessons;
+    }
 
     public User() {
     }
@@ -163,7 +177,9 @@ public class User {
         this.roles = roles;
     }
 
-
+    public void addLesson(Lesson lesson){
+        this.lessons.add(lesson);
+    }
 
 
 }

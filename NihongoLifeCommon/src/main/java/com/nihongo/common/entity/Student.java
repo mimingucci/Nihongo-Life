@@ -3,6 +3,7 @@ package com.nihongo.common.entity;
 import jakarta.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -48,6 +49,12 @@ public class Student {
 
     @OneToMany(mappedBy = "recipient", orphanRemoval = false, cascade = CascadeType.ALL)
     private Set<Message> receiveMessages=new HashSet<>();
+
+    @ManyToMany(mappedBy = "likes")
+    public Set<Lesson> likedLesson=new HashSet<>();
+
+    @ManyToMany(mappedBy = "dislikes")
+    public Set<Lesson> dislikedLesson=new HashSet<>();
 
     public Student(String name, String email, String password, AuthenticationType authType, boolean enabled, Date createdTime) {
         this.name = name;
@@ -188,5 +195,17 @@ public class Student {
                 ", authType=" + authType +
                 ", enabled=" + enabled +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student student)) return false;
+        return Objects.equals(getId(), student.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 }

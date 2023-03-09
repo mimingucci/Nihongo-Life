@@ -10,24 +10,26 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-//public interface LessonRepository extends JpaRepository<Lesson, Integer> {
-//    @Query("SELECT ls FROM Lesson ls WHERE ls.level = :level")
-//    public List<Lesson> lessonsByLevel(Level level);
-//
-//    public Page<Lesson> findAll(Pageable pageable);
-//
-//    @Query("SELECT ls FROM Lesson ls WHERE CONCAT(ls.name+' '+ls.content+' '+ls.title) LIKE %?1%")
-//    public Page<Lesson> findAllWithKeyword(String keyword, Pageable pageable);
-//
-//    @Query("UPDATE Lesson ls SET ls.level = :level WHERE ls.id = :id")
-//    @Modifying
-//    public void updateLessonByLevel(Level level, Integer id);
-//
-//    @Query("UPDATE Lesson ls SET ls.mainImage = :image WHERE ls.id = :id")
-//    @Modifying
-//    public void updateMainImage(String image, Integer id);
-//
-//    @Query("UPDATE Lesson ls SET ls.content = :content WHERE ls.id = :id")
-//    @Modifying
-//    public void updateContent(String content, Integer id);
-//}
+public interface LessonRepository extends JpaRepository<Lesson, Integer> {
+    @Query("SELECT ls FROM Lesson ls WHERE ls.level = :level")
+    public List<Lesson> lessonsByLevel(Level level);
+
+    public Lesson findLessonByIdAndLevel(Integer id, Level level);
+
+    public Page<Lesson> findAll(Pageable pageable);
+
+    @Query("SELECT ls FROM Lesson ls WHERE CONCAT(ls.name+' '+ls.content+' '+ls.title) LIKE %?1%")
+    public Page<Lesson> findAllWithKeyword(String keyword, Pageable pageable);
+
+    @Query("UPDATE Lesson ls SET ls.level = :level WHERE ls.id = :id")
+    @Modifying
+    public void updateLessonByLevel(Level level, Integer id);
+
+    @Query("UPDATE Lesson ls SET ls.mainImage = :image WHERE ls.id = :id")
+    @Modifying
+    public void updateMainImage(String image, Integer id);
+
+    @Query("UPDATE Lesson ls SET ls.content = :content WHERE ls.id = :id")
+    @Modifying
+    public void updateContent(String content, Integer id);
+}

@@ -2,6 +2,8 @@ package com.nihongo.common.entity;
 
 import jakarta.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "lessons")
@@ -18,11 +20,27 @@ public class Lesson {
 
     private String video;
 
-    @Column(name = "likes")
-    private Integer like;
+//    @Column(name = "likes")
+	@ManyToMany(cascade = {
+			CascadeType.PERSIST,
+			CascadeType.MERGE
+	})
+	@JoinTable(name = "lesson_like",
+			joinColumns = @JoinColumn(name = "lesson_id"),
+			inverseJoinColumns = @JoinColumn(name = "student_id")
+	)
+    private Set<Student> likes=new HashSet<>();
 
-    @Column(name = "dislikes")
-    private Integer dislike;
+//    @Column(name = "dislikes")
+	@ManyToMany(cascade = {
+			CascadeType.PERSIST,
+			CascadeType.MERGE
+	})
+	@JoinTable(name = "lesson_dislike",
+			joinColumns = @JoinColumn(name = "lesson_id"),
+			inverseJoinColumns = @JoinColumn(name = "student_id")
+	)
+    private Set<Student> dislikes=new HashSet<>();
     @Column(name = "title")
     private String title;
     @Column(name = "time_to_read")
@@ -35,14 +53,32 @@ public class Lesson {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "level_id")
     private Level level;
+    @ManyToOne(fetch = FetchType.LAZY)
+	private User author;
 
-    public Lesson(String name, String content, String title, Integer timeToRead) {
+	public Level getLevel() {
+		return level;
+	}
+
+	public void setLevel(Level level) {
+		this.level = level;
+	}
+
+	public User getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(User author) {
+		this.author = author;
+	}
+
+	public Lesson(String name, String content, String title, Integer timeToRead) {
         this.name = name;
         this.content=content;
         this.title=title;
         this.timeToRead=timeToRead;
-        this.like=0;
-        this.dislike=0;
+        this.likes=new HashSet<>();
+        this.dislikes=new HashSet<>();
     }
 
     public Lesson() {
@@ -88,20 +124,20 @@ public class Lesson {
 		this.video = video;
 	}
 
-	public Integer getLike() {
-		return like;
+	public Set<Student> getLikes() {
+		return likes;
 	}
 
-	public void setLike(Integer like) {
-		this.like = like;
+	public void setLikes(Set<Student> likes) {
+		this.likes = likes;
 	}
 
-	public Integer getDislike() {
-		return dislike;
+	public Set<Student> getDislikes() {
+		return dislikes;
 	}
 
-	public void setDislike(Integer dislike) {
-		this.dislike = dislike;
+	public void setDislikes(Set<Student> dislikes) {
+		this.dislikes = dislikes;
 	}
 
 	public String getTitle() {
@@ -135,5 +171,20 @@ public class Lesson {
 	public void setMainImage(String mainImage) {
 		this.mainImage = mainImage;
 	}
-    
+
+	public void addStudentLike(Student student){
+		this.likes.add(student);
+	}
+
+	public void addStudentDislike(Student student){
+		this.dislikes.add(student);
+	}
+
+	public void deleteStudentLike(Student student){
+		this.likes.remove(student);
+	}
+
+	public void deleteStudentDislike(Student student){
+		this.dislikes.remove(student);
+	}
 }

@@ -1,6 +1,10 @@
 package com.nihongo.common.entity;
 
 import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
+
 @MappedSuperclass
 public abstract class Studying {
     @Id
@@ -34,5 +38,4 @@ public abstract class Studying {
 		super();
 	}
 
-	
 }
